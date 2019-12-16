@@ -5,9 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model {
+	protected $primaryKey = 'id';
+	protected $table = 'products';
 	// $product->category
 	public function category() {
 		return $this->belongsTo(Category::class);
+	}
+
+	public function price() {
+		return $this->belongsTo(Price::class);
 	}
 
 	//$product ->images

@@ -23,6 +23,8 @@ class ProductController extends Controller {
 	}
 
 	public function showdos($id) {
+		$title_page = "Habitacion";
+		$title_hab = "Habitacion";
 		$product = Product::find($id);
 		$images = $product->images;
 
@@ -36,6 +38,6 @@ class ProductController extends Controller {
 			}
 
 		}
-		return view('products.showdos')->with(compact('product', 'imagesLeft', 'imagesRigth'));
+		return view('products.showdos')->with(compact('product', 'imagesLeft', 'imagesRigth', 'title_page', 'title_hab'));
 	}
 }

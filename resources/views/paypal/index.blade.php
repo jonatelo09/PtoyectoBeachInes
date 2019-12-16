@@ -1,14 +1,14 @@
-@extends('layouts.principal')
+@extends('plantilla_gral.plantilla_pay')
 
 @section('title', 'App shop | Paypal')
 
-@section('content')
+@section('contenido')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-lg-5 mt-sm-4">
         <div class="col-md-7 table-active">
             <div class="elemento-7">
                 <div class="text-left">
-                    <h3>Revisa tu Servicio</h3>
+                    <h3>Revisa tu Reserva</h3>
                 </div>
                 <div class="">
                     <div class="row">
@@ -21,15 +21,18 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <p>{{ auth()->user()->name}} </p>
-                                        <p>{{ auth()->user()->address}} </p>
+                                        <label>Nombre del Cliente: <span>{{ auth()->user()->firstname}} {{auth()->user()->lastname}} </span></label><br>
+                                        <label>Telefono: <span>{{ auth()->user()->phone}}</span></label><br>
+                                        <label>Email: <span>{{ auth()->user()->email}}</span></label>
+                                        <label>Direccion: <span>{{ auth()->user()->address}}</span></label>
+                                        <p> </p>
                                     </td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>
-                                        <li class="ml-4"><p class="alert alert-info">A esta direccion el personal de talachaz ira a brindar el servicio</p></li>
+
                                     </th>
                                 </tr>
                             </tfoot>
@@ -40,7 +43,7 @@
         </div>
         <div class="col-md-5 table-active">
             <div class="elemento-7">
-                <div class="text-center"><h4>Pago de Talacha</h4></div>
+                <div class="text-center"><h4>Paga Tu Reserva</h4></div>
                 <hr>
                 <div class="">
                     <form action="{{ route('pay') }}" method="POST" id="paymentForm">
@@ -71,6 +74,10 @@
                             </div>
                         </div>
                         <hr>
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-inline" name="condicion" required>
+                            <label>Aceptar termino y condiciones...</label>
+                        </div>
                         <div class="row mt-3">
                             <div class="col">
                                 <label>Selecciona la plataforma de pago de desees:</label>

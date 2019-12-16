@@ -1,0 +1,287 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:Helvetica;
+    
+
+}
+body {
+        font-size: 18px;
+        background: #f2f2f2;
+    
+    }
+
+html{
+        scroll-behavior: smooth;
+    }
+
+p   {
+        text-align: justify;
+        color: #000000;
+    }
+
+ul {
+    list-style: none;
+   }
+
+/*Efecto parallax*/
+
+#wrapper {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100% !important;
+}
+section {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    margin: 0 auto;
+    max-width: 1440px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100% !important;
+}
+
+#bloque2 {
+    background-image:url("/hotel/img/fondos/fiesta.jpg");
+
+    
+}
+#bloque3 {
+    background-image: url("/hotel/img/fondos/surfista.jpg");
+}
+#bloque4 {
+
+   /*  background-image: url('{{ asset('../img/fondos/footer.jpg') }}')*/;
+    background-image: url("/hotel/img/fondos/footer.jpg");
+}
+#h1 {
+    background-color: #02223a;
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    font-size: 5em;
+    font-weight: bold;
+    margin-top: 3em;
+    opacity: 0.76;
+    text-align: center;
+    text-shadow: 1px 1px 1px #666;
+    text-transform: uppercase;
+    width: 100%;
+}
+h2 {
+    color: #fff;
+    font-size: 5em;
+    font-weight: bold;
+    margin-top: 5em;
+    opacity: 0.85;
+    text-align: center;
+    text-shadow: 1px 1px 1px #ccc;
+    text-transform: uppercase;
+}
+
+#bloque2 p {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    font-size: 1.2em;
+    font-weight: normal;
+    margin: 7em auto;
+    max-width: 800px;
+    padding: 1.5em;
+}
+
+/*Efecto parallax*/
+
+
+/*Titulo de las paginas*/
+h1{
+    text-align: center;
+    color:#000000;
+    font-weight: bold;
+
+}
+/*Titulo de las paginas*/
+
+
+
+
+
+/*Habitaciones*/
+
+.nombrehab{
+    text-align: center;
+    color:#4d0026;
+    font-family: Helvetica;
+    font-size: 25px;
+
+}
+.descripcionhab{
+    text-align: justify;
+    color:black;
+    font-size: 18px;
+    
+}
+
+.preciohab{
+    text-align: left;
+    color:red;
+}
+.boton-reserva {
+    
+    text-decoration:none;
+    font-weight:bold;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:#800040;
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    border-radius:35px;
+    font-family: Helvetica;
+
+}
+.boton-reserva:hover{
+    color:#ffffff;
+    background:#4d0026;
+    border-color: #000000;
+}
+/*Habitaciones*/
+
+/*redes sociales*/
+ 
+  .redessociales{
+    position: fixed;
+    top: 410px;
+    z-index: 100;
+    left: 0;
+  }
+
+  #facebook a{
+    background: #067AEA;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    width: 55px;
+    transition: all .4s ease;
+    border-radius: 0 1rem 0 0;
+  }
+
+  #facebook a:hover{
+    background: #800040;
+    padding: 10px 50px;
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+  }
+  #twitter a{
+    background: #00aced;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    width: 55px;
+     transition: all .4s ease;
+  }
+  #twitter a:hover{
+    background: #800040;
+    padding: 10px 50px;
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+  }
+  #instagram a{
+    background: #ff0066;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    width: 55px;
+     transition: all .4s ease;
+  }
+  #instagram a:hover{
+    background: #800040;
+    padding: 10px 50px;
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+  }
+
+  #youtube a{
+    background: #ff0000;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    width: 55px;
+    transition: all .4s ease;
+     border-radius: 0 0 1rem 0;
+
+  }
+  #youtube a:hover{
+    background: #800040;
+    padding: 10px 50px;
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+  }
+  
+  
+/*redes sociales*/
+
+
+
+.logout{
+    text-align: center;
+    text-decoration:none;
+    font-weight:bold;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+    background-color:#000;
+    /*border: none;*/
+    border-color: #800040;
+    border-width: 3px;
+    border-style: solid;
+    border-radius:15px;
+    font-family: Helvetica;
+}
+
+.logout:hover{
+    
+    color:#ffffff;
+    background:#4d0026;
+    border-color: #000000;
+    border-color: #800040;
+    border-width: 3px;
+    border-style: solid;
+    border-radius:15px;
+    font-family: Helvetica;
+}
+.botoninicio{
+   text-decoration:none;
+    font-weight:bold;
+    font-size: 15px;
+    color:#ffffff;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:20px;
+    padding-right:20px;
+    /*background-color:;*/
+    border-color: #800040;
+    border-width: 3px;
+    border-style: solid;
+    border-radius:15px;
+    font-family: Helvetica;
+
+}
+
+.botoninicio:hover{
+    color:#ffffff;
+    background:#4d0026;
+    border-color: #000000;
+
+}

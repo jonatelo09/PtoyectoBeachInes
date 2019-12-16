@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Talachaz &mdash; MultiServicios</title>
+    <title>Beach Hotel Ines &mdash; MultiServicios</title>
     <meta charset="utf-8">
-    <meta name="description" content="Empresa dedicada a brindar servicios a domicilio, servicios que van desde lo mas básico hasta los mas avanzado, plomeria, albañilería, herrería, diligenciero, mecánica automotriz, mecánica de motos, etc.">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/talachas-ICO.svg')}}">
-    <link rel="icon" type="image/png" href="{{url('img/talachas-ICO.svg')}}">
 
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -48,53 +46,129 @@
       <div class="site-mobile-menu-body"></div>
     </div>
 
-    <header class="site-navbar py-1 bg-white js-sticky-header site-navbar-target" role="banner">
+    <header class="site-navbar py-1 bg-black js-sticky-header site-navbar-target" role="banner">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-6 col-xl-2 contenedor">
-            <h1 class="mb-0 site-logo"><a href="{{url('/')}} " class="text-black mb-0 text-cursiva"><img class="text-danger mt-1" src="{{url('img/talachas.svg')}} "></a></h1>
+            <h1 class="mb-0 site-logo"><a href="{{url('/')}} " class="text-black mb-0 text-cursiva"><img class="text-danger mt-1" src="{{url('img/hotel_logo.jpg')}}" style="width: 100px; height: 80px;"></a></h1>
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                     @guest
-                    <li><a href="{{url('/')}} " class="nav-link">Home</a></li>
+                    <li><a href="{{url('/')}} " class="nav-link text-white">INICIO</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" id="menu" data-toggle="dropdown" class="nav-link text-white dropdown-toggle">BEACH HOTEL INES</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">HABITACIONES</a>
+                            </li>
 
-                    <li><a href="/#services-section" class="nav-link">Categorias</a></li>
+                            <div class="dropdown-divider"></div>
 
-                    <li><a href="/#about-section" class="nav-link">Nosotros</a></li>
-                    <li><a href="/#contact-section" class="nav-link">Contactanos</a></li>
-                    <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">DEPARTAMENTOS</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">SUITES</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">BUNGALOWS</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">RESTAURANTE</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">SERVICIOS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-uppercase" href="{{ route ('galeria')}}">GALERIA</a>
+                    </li>
+                    <li><a href="/#services-section" class="nav-link text-white text-uppercase">Categorias</a></li>
+                    <li><a href="/#contact-section" class="nav-link text-white text-uppercase">Contactanos</a></li>
+                    <li><a class="nav-link text-white text-uppercase" href="{{ route('login') }}">Login</a></li>
                     @if (Route::has('register'))
-                        <li><a class="nav-link" href="{{ route('register') }}">Registro</a></li>
+                        <li><a class="nav-link text-white text-uppercase" href="{{ route('register') }}">Registro</a></li>
                     @endif
                     @else
-                    <li><a href="{{url('/')}} " class="nav-link">Home</a></li>
-                    <li><a href="/#services-section" class="nav-link">Categorias</a></li>
+                    <li><a href="{{url('/')}} " class="nav-link text-black">INICIO</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" id="menu" data-toggle="dropdown" class="nav-link text-black dropdown-toggle">BEACH HOTEL INES</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">HABITACIONES</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">DEPARTAMENTOS</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">SUITES</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">BUNGALOWS</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">RESTAURANTE</a>
+                            </li>
+
+                            <div class="dropdown-divider"></div>
+
+                            <li class="dropdown-item">
+                                <a class="text-black" href="">SERVICIOS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/#services-section" class="nav-link text-black">CATEGORIAS</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                        <a class="dropdown-toggle text-black text-uppercase" href="" role="button" data-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-item">
-                                  <a class="text-dark" href=" {{url('/home')}} ">Ir a cesta</a>
+                                  <a class="text-dark" href=" {{url('/home')}} ">Reservas</a>
                             </li>
                             @if (Auth::user()->admin)
                             <li class="dropdown-item">
-                                  <a class="text-dark" href=" {{url('/admin/products')}} ">Gestionar Empleados</a>
+                                <a class="text-dark" href=" {{route('products')}} ">Gestionar Habitaciones</a>
                             </li>
                             <li class="dropdown-item">
-                                <a class="text-dark" href=" {{url('/admin/aspirant')}} ">Gestionar aspirantes</a>
+                                <a class="text-dark" href=" {{route('mensajeria')}} ">Mensajeria</a>
                             </li>
                             <li class="dropdown-item">
-                                <a class="text-dark" href=" {{url('/admin/products')}} ">Gestionar productos</a>
+                                <a class="text-dark" href=" {{route('categories')}} ">Gestionar Categorias</a>
                             </li>
                             <li class="dropdown-item">
-                                <a class="text-dark" href=" {{url('/admin/category')}} ">Gestionar Categorias</a>
+                                <a class="text-dark" href=" {{route('users')}} ">Gestionar Usuarios</a>
                             </li>
-                            <li class="dropdown-item">
-                                <a class="text-dark" href=" {{url('/admin/user')}} ">Gestionar Usuarios</a>
-                            </li>
+                            <!-- <li class="dropdown-item">
+                                <a class="text-dark" href=" {{route('prices')}} ">Gestionar Precios</a>
+                            </li> -->
                             <li class="dropdown-item">
                                 <a class="text-dark" href=" {{url('/admin/profile')}} ">Perfil</a>
                             </li>
@@ -114,11 +188,8 @@
                     </li>
 
                      <li>
-                        <a href="{{url('/home')}} " class="nav-link">
+                        <a href="{{url('/home')}} " class="nav-link text-white">
                             <i class="material-icons">shopping_cart</i>
-                            <span class="badge badge-danger spinner-border">
-                                {{ auth()->user()->cart->details->quantity }}
-                            </span>
                         </a>
                     </li>
                     @endguest
@@ -127,14 +198,16 @@
           </div>
 
 
-        <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+        <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3 text-white"></span></a></div>
 
         </div>
       </div>
 
     </header>
-    <div class="site-wrap">@yield('content')</div>
-     @include('includes.footerdos')
+    <div class="site-wrap">
+        @yield('content')
+    </div>
+     @include('includes.footer')
     </div>
     <!-- .site-wrap -->
     @stack('scripts')
@@ -153,11 +226,10 @@
     <script src="{{asset('js_II/aos.js')}}"></script>
     <script src="{{asset('js_II/jquery.fancybox.min.js')}}"></script>
     <script src="{{asset('js_II/jquery.sticky.js')}}"></script>
-
-
-  <script src="{{asset('js_II/main.js')}}"></script>
-  <!--   Core JS Files   -->
-  <script src="{{asset('js/calificacion.js')}} " type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/3a8f3b3502.js" crossorigin="anonymous"></script>
+    <script src="{{asset('js_II/main.js')}}"></script>
+    <!--   Core JS Files   -->
+    <script src="{{asset('js/calificacion.js')}} " type="text/javascript"></script>
 
   </body>
 </html>

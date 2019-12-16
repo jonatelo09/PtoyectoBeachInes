@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Nuevo pedido</title>
+	<title>Nueva Reserva</title>
 </head>
 <body>
-	<p>Se ha realizado un nuevo pedido!</p>
+	<p>Se ha realizado una nueva Reserva!</p>
 	<p>Estos son los datos de cliente</p>
 	<ul class="table-active">
 		<li>
 			<strong>Nombre: </strong>
-			{{ $user->name }}
+			{{ $user->username }}
 		</li>
 		<li>
 			<strong>E-mail:</strong>
@@ -22,7 +22,7 @@
 		</li>
 
 		<li>
-			<strong>Fecha de pedido:</strong>
+			<strong>Fecha de reserva:</strong>
 			{{ $cart->oreder_date }}
 		</li>
 		<li>
@@ -31,7 +31,7 @@
 		</li>
 	</ul>
 	<hr>
-	<p>Detalles del pedido:</p>
+	<p>Detalles de la Reserva:</p>
 	<ul>
 		@foreach ($cart->details as $detail)
 		<li>

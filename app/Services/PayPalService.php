@@ -64,7 +64,7 @@ Class PayPalService {
 
 			return redirect()
 				->route('home')
-				->withSuccess(['payment' => "Gracias, {$name}. Hemos recivido tu {$amount}{$currency} payment."]);
+				->withSuccess(['payment' => "Gracias, {$name}. Hemos recivido tu pago de {$amount}{$currency}"]);
 		}
 
 		return redirect()

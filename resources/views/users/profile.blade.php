@@ -1,7 +1,7 @@
-@extends('layouts.principal')
+@extends('plantilla_admin.plantilla_admin')
 
 
-@section('content')
+@section('contenido')
 <div class="site-section bg-light">
       <div class="container">
         <div class="bg-white py-4 elemento-3">
@@ -14,7 +14,7 @@
 		        		<div class="col-md-auto mb-lg-0 position-relative">
 			        		<div class="form-group label-floating">
 			                	<label class="control-label">Nombre</label>
-			                	<input type="text" class="form-control" name="name" value="{{ auth()->user()->name}} ">
+			                	<input type="text" class="form-control" name="name" value="{{ auth()->user()->username}} ">
 			              	</div>
 			        	</div>
 			        	<div class="col-md-auto">

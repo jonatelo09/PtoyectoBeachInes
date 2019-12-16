@@ -8,7 +8,7 @@
   <div class="main main-raised">
     <div class="container">
       <div class="site-section text-center">
-        <h2 class="title elemento-4">Aspirantes Postulados</h2>
+        <h2 class="title elemento-4">Mensajes de la Pagina</h2>
         <div class="team">
         	<div class="row">
         		<table class="table">
@@ -17,7 +17,7 @@
         					<th class="col-md-2 text-center">Nombre</th>
         					<th class="col-md-5 text-center">Email</th>
                             <th class="text-center">Telefono</th>
-                            <th class="text-center">Oficio</th>
+                            <th class="text-center">Mensaje</th>
                             <th class="text-right">Opciones</th>
         				</tr>
         			</thead>

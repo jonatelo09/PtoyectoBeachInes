@@ -1,10 +1,10 @@
-@extends('layouts.principal')
+@extends('plantilla_admin.plantilla_admin')
 
 @section('title', 'Registro de categorias')
 
 @section('body-class', 'landing-page')
 
-@section('content')
+@section('contenido')
 <div class="main main-raised">
   <div class="container">
       <div class="site-section">
@@ -22,32 +22,21 @@
           @csrf
           <div class="row">
             <div class="col-sm-6">
-            <div class="form-group label-floating">
-              <label class="control-label">Nombre de la categoria</label>
-              <input type="text" class="form-control" name="name" value="{{ old('name',$categori->name) }}">
+              <div class="form-group label-floating">
+                <label class="control-label">Nombre de la categoria</label>
+                <input type="text" class="form-control text-uppercase" name="name_cat" value="{{ old('name_cat',$categori->name_cat) }}">
+              </div>
             </div>
-          </div>
-          <div class="col-sm-6">
-                <label class="control-label">Imagen de la categoria</label>
-                <input type="file" name="image">
-            </div>
-          </div>
-          <div class="row">
+
             <div class="col-sm-6">
               <div class="form-group label-floating">
-                <label class="control-label">Icono de la categoria</label>
-                <input type="text" class="form-control" name="icono" value="{{old('icono', $categori->icono)}}">
+                <label class="control-label">Descripcion corta de la categoria</label>
+                <input type="text" class="form-control" name="description" value="{{ old('description',$categori->description) }}">
               </div>
             </div>
           </div>
-            <div class="form-group label-floating">
-              <label class="control-label">Descripcion corta de la categoria</label>
-              <input type="text" class="form-control" name="description" value="{{ old('description',$categori->description) }}">
-            </div>
-
-              <button class="btn btn-success">Guardar Cambios</button>
-              <a href="{{ url('/admin/category')}}" class="btn btn-info">Cancelar</a>
-
+            <button class="btn btn-success">Guardar Cambios</button>
+            <a href="{{ url('/admin/category')}}" class="btn btn-info">Cancelar</a>
         </form>
       </div>
     </div>

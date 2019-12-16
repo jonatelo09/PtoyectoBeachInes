@@ -1,52 +1,80 @@
-@extends('layouts.principal')
+@extends('plantilla_admin.plantilla_admin')
 
-@section('title', 'Listado de productos')
-
-@section('body-class', 'product-page')
-
-@section('content')
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/landing-page.jpg') }}')">
-</div>
+@section('contenido')
 <div class="main main-raised">
     <div class="container">
-      <div class="site-section text-center">
+      <div class="site-section">
 
         <div class="team">
-            <div class="row elemento-4">
-            <h2 class="title">Productos Disponibles</h2>
-            <div class="container-fluid text-center">
-            <a href=" {{url('/admin/products/create')}} " class="btn btn-primary btn-round mt-1 mb-3">Nuevo Producto</a>
+            <h2 class="title">Lista de Habitaciones Activas</h2>
+            <div class="container">
+            <a href=" {{route('products.create')}} " class="btn btn-success btn-round mt-1 mb-3">Nueva Habitacion</a>
             </div>
-
+            <div class="row">
+                <div class="col-md-12 text-center" item="center">
+                    <form method="get" action="" autocomplete="off" role="search">
+                    @csrf
+                      <div class="form-group">
+                           <div class="input-group">
+                              <input type="text" class="form-control" name="searchText" placeholder="Buscar..." value="">
+                              <span class="input-group-btn">
+                              <button type="submit" class="btn btn-primary">Buscar</button>
+                              </span>
+                          </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row elemento-4">
                 <table class="table">
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th class="col-md-2 text-center">Name</th>
-                            <th class="col-md-5 text-center">Description</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Incluye</th>
                             <th class="text-center">Categoria</th>
                             <th class="text-right">Precio</th>
-                            <th class="col-md-4 text-right">Opciones</th>
+                            <th class="text-right">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach( $products as $product)
+                        @foreach($habitacion as  $hab)
+                        <?php
+$des = json_decode($hab->descripcion, true);
+$inc = json_decode($hab->incluye, true);
+?>
+
                         <tr>
-                            <td class="text-center"> {{ $product->id}} </td>
-                            <td>{{ $product->name}}</td>
-                            <td>{{ $product->description}}</td>
-                            <td> {{$product->category ? $product->category->name : 'General'}} </td>
-                            <td class="text-right"> {{ $product->price}}</td>
+                            <td class="text-center"> {{ $hab->id}} </td>
+                            <td>{{ $hab->name}}</td>
+                            @if(is_array($des))
+                              <td class="text-justify">
+                                  @foreach($des as $key => $desc)
+                                     {{ $desc["descrip"] }}, {{ $desc["can_p"] }}, {{ $desc["can_c"] }}.
+                                   @endforeach
+                                </td>
+                               @endif
+                            @if(is_array($inc))
+                                <td class="text-justify">
+                                  @foreach($inc as $key => $in)
+                                  {{ $in["item"] }},
+
+                                 @endforeach.
+                                </td>
+                            @endif
+                            <td> {{$hab->category ? $hab->category->nomCategoria : 'General'}} </td>
+                            <td class="text-right"> {{ $hab->temprecio}}</td>
                             <td class="td-actions text-right">
-                                <form method="post" action="{{url('/admin/products/'.$product->id.'/delete')}}">
+                                <form method="post" action="{{route('products.destroy',$hab->id)}}">
                                     @csrf
-                                    <a href=" {{url('/products-dos/'.$product->id)}} " rel="tooltip" title="ver detalles" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-info" target="_blank"></i></a>
+                                    {{--<a href=" {{url('/products-dos/'.$product->id)}} " rel="tooltip" title="ver detalles" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-info" target="_blank"></i></a> --}}
 
-                                    <a href="{{url('/admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Editar producto" class="btn btn-success btn-sm btn-xs"> <i class="fa fa-edit"></i></a>
+                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-edit"></i> Editar</a>
 
-                                    <a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Imagenes del Producto" class="btn btn-warning btn-sm btn-xs"> <i class="fa fa-image"></i></a>
+                                    {{--<a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Imagenes del Producto" class="btn btn-warning btn-sm btn-xs"> <i class="fa fa-image"></i></a>--}}
 
-                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-xs"><i class="fa fa-times"></i></button>
+                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-xs"><i class="fa fa-times"></i> Desactivar</button>
                                 </form>
 
                             </td>
@@ -54,8 +82,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
-                {{ $products->links() }}
+                {{$habitacion->render()}}
             </div>
         </div><!-- end team -->
       </div><!-- end section -->

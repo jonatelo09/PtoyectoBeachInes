@@ -1,10 +1,10 @@
-@extends('layouts.principal')
+@extends('plantilla_admin.plantilla_admin')
 
 @section('title', 'Registro de categorias')
 
 @section('body-class', 'product-page')
 
-@section('content')
+@section('contenido')
 <div class="main main-raised">
   <div class="container">
       <div class="site-section">
@@ -24,25 +24,17 @@
             <div class="col-sm-6">
               <div class="form-group label-floating">
                 <label class="control-label">Nombre de la categoria</label>
-                <input type="text" class="form-control" name="name" value="{{old('name')}}">
+                <input type="text" class="form-control text-uppercase" name="name_cat" value="{{old('name_cat')}}">
               </div>
-            </div>
-            <div class="col-sm-6">
-                <label class="control-label">Imagen de la categoria</label>
-                <input type="file" name="image">
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group label-floating">
-                <label class="control-label">Icono de la categoria</label>
-                <input type="text" class="form-control" name="icono" value="{{old('icono')}}">
-              </div>
+              <label class="control-label">Descripcion corta de la categoria</label>
+            <input type="text" class="form-control" name="description" value="{{old('description')}}">
             </div>
           </div>
-          <div class="form-group label-floating">
-            <label class="control-label">Descripcion corta de la categoria</label>
-            <input type="text" class="form-control" name="description" value="{{old('description')}}">
           </div>
 
               <button class="btn btn-success">Registrar Categoria</button>

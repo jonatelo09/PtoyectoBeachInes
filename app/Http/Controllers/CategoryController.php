@@ -14,4 +14,5 @@ class CategoryController extends Controller {
 		$products = $category->products()->paginate(6);
 		return view('categories.showdos')->with(compact('category', 'products'));
 	}
+
 }

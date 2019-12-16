@@ -7,11 +7,8 @@ use App\Product;
 
 class TestController extends Controller {
 	public function welcome() {
-		$categories = Category::has('products')->get();
-		$products = Product::leftJoin('product_images', 'product_images.id', '=', 'products.id')
-			->where('product_images.featured', true)->get();
-
-		return view('welcomedos')->with(compact('categories', 'products'));
+		$title_page = "Bienvenidos";
+		return view('paginas.inicio', compact('title_page'));
 	}
 
 	public function principal() {

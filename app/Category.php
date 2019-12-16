@@ -4,36 +4,37 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
-{
-    public static $messages = [
-        'name.required' => 'Es necesario ingresar un nombre para la categoría.',
-        'name.min' => 'El nom
+class Category extends Model {
+	protected $table = 'categories';
+	public static $messages = [
+		'name.required' => 'Es necesario ingresar un nombre para la categoría.',
+		'name.min' => 'El nom
 
         bre de la categoría debe tener al menos 3 caracteres.',
-        'description.max' => 'La descripción corta solo admite hasta 250 caracteres.'
-    ];
-    public static $rules = [
-        'name' => 'required|min:3',
-        'description' => 'max:250'
-    ];
-    protected $fillable = ['name', 'description'];
+		'description.max' => 'La descripción corta solo admite hasta 250 caracteres.',
+	];
+	public static $rules = [
+		'name' => 'required|min:3',
+		'description' => 'max:250',
+	];
+	protected $fillable = ['name', 'description'];
 
-    // $category-> product
+	// $category-> product
 
-    public function products()
-    {
-    	return $this->hasMany(Product::class);
-    }
+	public function products() {
+		return $this->hasMany(Product::class);
+	}
 
-    public function getFeaturedImageUrlAttribute()
-    {
-        if($this->image)
-            return '/images/categories/'.$this->image;
+	public function getFeaturedImageUrlAttribute() {
+		if ($this->image) {
+			return '/images/categories/' . $this->image;
+		}
 
-    	$firstProduct = $this->products()->first();
-        if ($firstProduct)
-            return $firstProduct->featured_image_url;
-        return '/images/categories/default.png';
-    }
+		$firstProduct = $this->products()->first();
+		if ($firstProduct) {
+			return $firstProduct->featured_image_url;
+		}
+
+		return '/images/categories/default.png';
+	}
 }

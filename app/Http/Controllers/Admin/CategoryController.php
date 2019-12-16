@@ -20,37 +20,22 @@ class CategoryController extends Controller {
 		//registrar el nuevo producto en la bd
 		//dd($request->all());
 		$messages = [
-			'name.required' => 'Es necesario ingresar un nombre para el producto',
-			'name.min' => 'El nombre del producto debe tener al menos 6 caracteres',
+			'name_cat.required' => 'Es necesario ingresar un nombre para el producto',
+			'name_cat.min' => 'El nombre del producto debe tener al menos 6 caracteres',
 			'description.required' => 'La description corta es obligatorio',
 			'description.max' => 'La descripcion corta admite solo 30 caracteres',
 		];
 		$rules = [
-			'name' => 'required|min:6',
+			'name_cat' => 'required|min:3',
 			'description' => 'required|max:100',
 		];
 
 		$this->validate($request, $rules, $messages);
 
 		$categori = new Category();
-		$categori->name = $request->input('name');
+		$categori->name_cat = $request->input('name_cat');
 		$categori->description = $request->input('description');
-		$categori->image = $request->input('image');
 		$categori->save(); //ejecutar una consulta INSERT a la tabla productos
-
-		if ($request->hasFile('image')) {
-			$file = $request->file('image');
-			$path = public_path() . '/images/categories';
-			$fileName = uniqid() . '-' . $file->getClientOriginalName();
-			$moved = $file->move($path, $fileName);
-
-			//update category
-			if ($moved) {
-				$categori->image = $fileName;
-				$categori->save(); //update
-			}
-		}
-
 		return redirect('/admin/category');
 
 	}
@@ -62,20 +47,20 @@ class CategoryController extends Controller {
 
 	public function update(Request $request, $id) {
 		$messages = [
-			'name.required' => 'Es necesario ingresar un nombre para el producto',
-			'name.min' => 'El nombre del producto debe tener al menos 6 caracteres',
+			'name.required' => 'Es necesario ingresar un nombre para la Categoria',
+			'name.min' => 'El nombre de la Categoria debe tener al menos 3 caracteres',
 			'description.required' => 'La description corta es obligatorio',
 			'description.max' => 'La descripcion corta admite solo 30 caracteres',
 		];
 		$rules = [
-			'name' => 'required|min:6',
+			'name_cat' => 'required|min:3',
 			'description' => 'required|max:100',
 		];
 
 		$this->validate($request, $rules, $messages);
 
 		$categori = Category::find($id);
-		$categori->name = $request->input('name');
+		$categori->name_cat = $request->input('name_cat');
 		$categori->description = $request->input('description');
 		$categori->save(); //ejecutar una consulta UPDATE a la tabla productos
 
