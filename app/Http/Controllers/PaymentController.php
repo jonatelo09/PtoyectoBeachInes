@@ -54,7 +54,7 @@ class PaymentController extends Controller {
 		}
 
 		return redirect()
-			->route('home')
+			->route('reservas')
 			->withErrors('No podemos recuperar su plataforma de pago. por favor, inténtalo de nuevo');
 	}
 
@@ -74,7 +74,7 @@ class PaymentController extends Controller {
 
 	public function cancelado() {
 		return redirect()
-			->route('home')
+			->route('reservas')
 			->withErrors('Tu pago ha sido cancelado');
 	}
 }

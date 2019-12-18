@@ -63,7 +63,7 @@
 		const { paymentMethod, error} = await stripe.createPaymentMethod(
 			'card', cardElement, {
 				billing_details:{
-					"name": "{{ auth()->user()->name }}",
+					"name": "{{ auth()->user()->username }}",
 					"email": "{{ auth()->user()->email }}"
 				}
 			}
