@@ -2,6 +2,7 @@
 /*=============================================
 =            RUTAS FRONT-END                 =
 =============================================*/
+Route::name('print')->get('/imprimir', 'GeneradorController@imprimir');
 Route::get('/', 'PaginaController@inicio')->name('inicio');
 Route::get('/habitaciones', 'PaginaController@estandar')->name('habitaciones');
 Route::get('/departamentos', 'PaginaController@departamento')->name('departamentos');
@@ -60,6 +61,8 @@ Route::post('/order', 'CartController@update');
 Route::resource('habitacionesadmin', 'HabitacionController');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
+	Route::get('reservas-pendientes', 'ProductController@reservasPendientes')->name('reservasPendientes');
+	Route::get('reservas-aprobadas', 'ProductController@reservasAprobadas')->name('reservasAprobadas');
 	Route::get('/habitaciones', 'ProductController@index')->name('products'); //listado
 	Route::get('/habitaciones_inactivas', 'ProductController@inactivo')->name('products.inactiva'); //listado
 	Route::post('/habitaciones/{id}/activar', 'ProductController@activar')->name('products.activar'); //listado

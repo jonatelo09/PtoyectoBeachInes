@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 //
 class ProductController extends Controller {
@@ -26,8 +27,46 @@ class ProductController extends Controller {
 		}
 	}
 
-	public function reservasAprobadas() {
-		//
+	public function reservasPendientes(Request $request) {
+		if ($request) {
+			$title_page = "Reservas pendientes";
+			$title_hab = "Lista de Reservas pendientes";
+			$query = trim($request->get('searchText'));
+			$habitacion = DB::table('cart_details as cd')
+				->join('products as pro', 'cd.product_id', '=', 'pro.id')
+				->join('carts as car', 'cd.cart_id', '=', 'car.id')
+				->join('users as us', 'car.user_id', '=', 'us.id')
+				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
+				->select('cd.id', 'cd.entry_date', 'cd.departure_date', 'cd.facturar', 'pro.name', 'pro.price as temprecio', 'cat.name_cat as nomCategoria', 'us.username', 'us.email', 'us.phone', 'car.status')
+				->where('pro.name', 'LIKE', '%' . $query . '%')
+				->where('car.status', '=', "Active")
+			//->get()
+				->paginate(8);
+			//dd($habitacion);
+
+			return view('admin.reservas.reservas-pendientes', compact('habitacion', 'query', 'title_page', 'title_hab'));
+		}
+	}
+
+	public function reservasAprobadas(Request $request) {
+		if ($request) {
+			$title_page = "Reservas Aprobadas";
+			$title_hab = "Lista de Reservas Aprobadas";
+			$query = trim($request->get('searchText'));
+			$habitacion = DB::table('cart_details as cd')
+				->join('products as pro', 'cd.product_id', '=', 'pro.id')
+				->join('carts as car', 'cd.cart_id', '=', 'car.id')
+				->join('users as us', 'car.user_id', '=', 'us.id')
+				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
+				->select('cd.id', 'cd.entry_date', 'cd.departure_date', 'cd.facturar', 'pro.name', 'pro.price as temprecio', 'cat.name_cat as nomCategoria', 'us.username', 'us.email', 'us.phone', 'car.status')
+				->where('pro.name', 'LIKE', '%' . $query . '%')
+				->where('car.status', '=', "Aprobada")
+			//->get()
+				->paginate(8);
+			//dd($habitacion);
+
+			return view('admin.reservas.reservas-aprobadas', compact('habitacion', 'query', 'title_page', 'title_hab'));
+		}
 	}
 
 	public function inactivo(Request $request) {
@@ -81,11 +120,15 @@ class ProductController extends Controller {
 			'price.numeric' => 'Ingrese u  numero valido',
 			'price.min' => 'No se admiten valores negativos',
 			'category_id' => 'Necesitas seleccionar una categoria para la Habitacion',
+			'img.min_width' => 'Para las imagenes solo se permiten como minimo 100px de ancho',
+			'img.min_height' => 'Para las imagenes solo se permiten como minimo 200px de largo',
+			'img.max' => 'Para las imagenes solo se permiten como maximo 5000px',
 		];
 		$rules = [
 			'name' => 'required|min:6',
 			'price' => 'required|numeric|min:0',
 			'category_id' => 'required',
+			'img' => 'dimensions:min_width=100,min_height=200|max:5000',
 		];
 
 		$this->validate($request, $rules, $messages);

@@ -20,6 +20,7 @@
            <link rel="stylesheet" type="text/css" href="{{ asset('hotel/css/jquery.datetimepicker.css') }}">
 
            <link rel="stylesheet" type="text/css" href="{{ asset('hotel/css/fullcalendar.min.css') }}">
+           <title>{!! $title_page !!} | Beach Hotel Ines</title>
 
 
 
@@ -53,7 +54,9 @@
                 @endauth
               </a>
               <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">
-              <a class="btn btn-sm text-white" href=" {{route('reservas')}} ">Reservas</a>
+              <a class="btn btn-sm text-white" href=" {{route('reservas')}} ">Mis Reservas</a>
+              <a class="btn btn-sm text-white" href=" {{route('reservasPendientes')}} ">Reservas pendientes de usuarios</a>
+              <a class="btn btn-sm text-white" href=" {{route('reservasAprobadas')}} ">Reservas aprobadas de usuarios</a>
               <a class="btn btn-sm text-white" href=" {{route('products')}} ">Habitaciones Activas</a>
               <a class="btn btn-sm text-white" href=" {{route('products.inactiva')}} ">Habitaciones Inactivas</a>
               <a class="btn btn-sm text-white" href=" {{route('categories')}} ">Categorias</a>

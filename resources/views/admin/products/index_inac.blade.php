@@ -59,7 +59,7 @@ $inc = json_decode($hab->incluye, true);
                                  @endforeach.
                                 </td>
                             @endif
-                            <td> {{$hab->category ? $hab->category->name_cat : 'General'}} </td>
+                            <td> {{$hab->nomCategoria}} </td>
                             <td class="text-right"> {{ $hab->temprecio}}</td>
                             <td class="td-actions">
                                 <form method="post" action="{{route('products.activar',$hab->id)}}">
