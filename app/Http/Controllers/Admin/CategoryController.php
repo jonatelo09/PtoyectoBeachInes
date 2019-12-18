@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller {
-	public function index() {
-		$categories = Category::paginate(6);
-		return view('admin.category.index')->with(compact('categories')); //devolvera el listado de los productos
+	public function index(Request $request) {
+		if ($request) {
+			$title_page = "Categorias";
+			$title_hab = "LIsta de Categorias";
+			$query = trim($request->get('searchText'));
+			$categories = Category::where('categories.name_cat', 'LIKE', '%' . $query . '%')
+				->paginate(6);
+			return view('admin.category.index')->with(compact('categories')); //devolvera el listado de los productos
+		}
 	}
 
 	public function create() {

@@ -15,21 +15,12 @@ class ProductController extends Controller {
 			$title_page = "Habitaciones";
 			$title_hab = "Suites";
 			$query = trim($request->get('searchText'));
-			//$habitacion = Product::paginate(5);
-			/*$habitacion = Product::with('category')->where('condicion', '=', 1)->where('products.name', 'LIKE', '%' . $query . '%')->paginate(5);*/
 			$habitacion = Product::join('categories as cat', 'products.category_id', '=', 'cat.id')
 				->select('products.id', 'products.name', 'products.descripcion', 'products.img', 'products.incluye', 'cat.name_cat as nomCategoria', 'products.price as temprecio')
 				->where('products.name', 'LIKE', '%' . $query . '%')
 				->where('products.condicion', '=', 1)
 			//->get()
 				->paginate(8);
-
-			/*$habitacion = DB::table('products as pro')
-				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
-				->select('pro.id', 'pro.name', 'pro.descripcion', 'pro.img', 'pro.incluye', 'cat.name_cat as nomCategoria', 'pro.price as temprecio')
-				->where('pro.name', 'LIKE', '%' . $query . '%')
-				->where('pro.condicion', '=', 1)
-				->paginate(10);*/
 
 			return view('admin.products.index', compact('habitacion', 'title_page', 'title_hab', 'query'));
 		}
@@ -89,10 +80,12 @@ class ProductController extends Controller {
 			'price.required' => 'Es obligatorio definir un precio para la habitacion',
 			'price.numeric' => 'Ingrese u  numero valido',
 			'price.min' => 'No se admiten valores negativos',
+			'category_id' => 'Necesitas seleccionar una categoria para la Habitacion',
 		];
 		$rules = [
 			'name' => 'required|min:6',
 			'price' => 'required|numeric|min:0',
+			'category_id' => 'required',
 		];
 
 		$this->validate($request, $rules, $messages);

@@ -34,7 +34,7 @@
             <div class="col-sm-6">
               <div class="form-group label-floating">
                 <label class="control-label">Descripcion</label>
-                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" required="">
+                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" required>
                 {!! $errors->first('descripcion','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!}
               </div>
             </div>
@@ -50,8 +50,8 @@
             <div class="col-sm-6">
               <div class="form-group label-floating">
                 <label class="control-label">Categoria de la Habitacion</label>
-                <select class="form-control" name="category_id">
-                  <option value="0">General</option>
+                <select class="form-control" name="category_id" required>
+                  <option selected disabled>Seleccione una opcion</option>
                   @foreach ($categories as $category)
                   <option value=" {{$category->id}} "> {{$category->name_cat}} </option>
                   @endforeach
@@ -208,7 +208,7 @@
           <div class="row">
             <div class="col-sm-6">
               <button class="btn btn-primary">Registrar Producto</button>
-              <a href="{{ url('/admin/products')}}" class="btn btn-default">Cancelar</a>
+              <a href="{{ route('products')}}" class="btn btn-default">Cancelar</a>
             </div>
           </div>
 

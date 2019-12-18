@@ -1,17 +1,30 @@
 @extends('plantilla_admin.plantilla_admin')
 
 @section('contenido')
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('img/city.jpg') }}')">
-</div>
   <div class="main main-raised">
     <div class="container">
-      <div class="site-section text-center">
-        <h2 class="title elemento-4">Categorias Disponibles</h2>
+      <div class="site-section">
         <div class="team">
-        	<div class="row">
-        		<div class="form-group">
-                    <a href=" {{url('/admin/category/create')}} " class="btn btn-primary btn-round">Nueva Categoria</a>
+            <h2 class="title">Categorias Disponibles</h2>
+            <div class="container">
+                <a href=" {{url('/admin/category/create')}} " class="btn btn-primary btn-round mt-1 mb-3">Nueva Categoria</a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center" item="center">
+                    <form method="get" action="" autocomplete="off" role="search">
+                    @csrf
+                      <div class="form-group">
+                           <div class="input-group">
+                              <input type="text" class="form-control" name="searchText" placeholder="Buscar..." value="">
+                              <span class="input-group-btn">
+                              <button type="submit" class="btn btn-primary">Buscar</button>
+                              </span>
+                          </div>
+                      </div>
+                    </form>
                 </div>
+            </div>
+        	<div class="row">
         		<table class="table">
         			<thead>
         				<tr>

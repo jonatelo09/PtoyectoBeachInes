@@ -4,11 +4,10 @@
 <div class="main main-raised">
     <div class="container">
       <div class="site-section">
-
         <div class="team">
             <h2 class="title">Lista de Habitaciones Activas</h2>
             <div class="container">
-            <a href=" {{route('products.create')}} " class="btn btn-success btn-round mt-1 mb-3">Nueva Habitacion</a>
+                <a href=" {{route('products.create')}} " class="btn btn-success btn-round mt-1 mb-3">Nueva Habitacion</a>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center" item="center">
@@ -65,16 +64,16 @@ $inc = json_decode($hab->incluye, true);
                             @endif
                             <td> {{$hab->category ? $hab->category->nomCategoria : 'General'}} </td>
                             <td class="text-right"> {{ $hab->temprecio}}</td>
-                            <td class="td-actions text-right">
+                            <td class="td-actions">
                                 <form method="post" action="{{route('products.destroy',$hab->id)}}">
                                     @csrf
                                     {{--<a href=" {{url('/products-dos/'.$product->id)}} " rel="tooltip" title="ver detalles" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-info" target="_blank"></i></a> --}}
 
-                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-edit"></i> Editar</a>
+                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> Editar</a>
 
                                     {{--<a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Imagenes del Producto" class="btn btn-warning btn-sm btn-xs"> <i class="fa fa-image"></i></a>--}}
 
-                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-xs"><i class="fa fa-times"></i> Desactivar</button>
+                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-block"><i class="fa fa-times"></i> Desactivar</button>
                                 </form>
 
                             </td>
