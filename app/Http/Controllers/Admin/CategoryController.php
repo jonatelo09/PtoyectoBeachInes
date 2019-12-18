@@ -14,12 +14,14 @@ class CategoryController extends Controller {
 			$query = trim($request->get('searchText'));
 			$categories = Category::where('categories.name_cat', 'LIKE', '%' . $query . '%')
 				->paginate(6);
-			return view('admin.category.index')->with(compact('categories')); //devolvera el listado de los productos
+			return view('admin.category.index')->with(compact('categories', 'title_page', 'title_hab')); //devolvera el listado de los productos
 		}
 	}
 
 	public function create() {
-		return view('admin.category.create'); //formulario de registro
+		$title_page = "Categorias";
+		$title_hab = "Crear Categorias";
+		return view('admin.category.create', compact('title_page', 'title_hab')); //formulario de registro
 	}
 
 	public function store(Request $request) {

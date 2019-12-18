@@ -64,15 +64,15 @@ $inc = json_decode($hab->incluye, true);
                             @endif
                             <td> {{$hab->nomCategoria}} </td>
                             <td class="text-right"> {{ $hab->temprecio}}</td>
-                            <td class="td-actions">
+                            <td class="td-actions text-right">
                                 <form method="post" action="{{route('products.destroy',$hab->id)}}">
                                     @csrf
 
-                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> Editar</a>
+                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
 
                                     {{--<a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Imagenes del Producto" class="btn btn-warning btn-sm btn-xs"> <i class="fa fa-image"></i></a>--}}
 
-                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-block"><i class="fa fa-times"></i> Desactivar</button>
+                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm"><i class="fa fa-times"></i></button>
                                 </form>
 
                             </td>

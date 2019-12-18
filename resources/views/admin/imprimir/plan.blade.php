@@ -109,7 +109,7 @@
                             <td height="14" align="center" class="border fondo"><span class="h1">Comprobante de pago</span></td>
                         </tr>
                         <tr>
-                            <td height="15" align="center" class="border">001- Nº <span class="text">numero</span></td>
+                            <td height="15" align="center" class="border">001- Nº <span class="text">numero: {{$details_id->folio_reserva}}</span></td>
                         </tr>
                     </table>
                 </td>

@@ -73,13 +73,13 @@ Class StripeService {
 				$amount = $confirmation->amount / $this->resolverFactor($currency);
 
 				return redirect()
-					->route('home')
+					->route('reservas')
 					->withSuccess(['payment' => "Gracias, {$name}. Hemos recivido tu pago de {$amount} ({$currency} )"]);
 			}
 		}
 
 		return redirect()
-			->route('home')
+			->route('reservas')
 			->withErrors('No pudimos confirmar su pago. por favor, inténtalo de nuevo.');
 	}
 

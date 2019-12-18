@@ -42,7 +42,7 @@ class CartDetailController extends Controller {
 		//dd($cartDetail);
 		$cartDetail->save();
 
-		return redirect()->route('home')->with('info', 'El producto se a cargado exitosamente a tu carrito de compras');
+		return redirect()->route('reservas')->with('info', 'El producto se a cargado exitosamente a tu carrito de compras');
 	}
 
 	public function destroy($id) {
