@@ -30,12 +30,11 @@
     @endif
     <hr>
     <p>
-        <h3 class="title text-center">Tu Carrito de compras contiene:
-            {{ auth()->user()->cart->details->count() }} Reservas.</h3>
+        <h3 class="title text-center">Tienes {{$canti}} Reservas Realizadas:</h3>
     </p>
     <hr>
     <div class="row justify-content-center" id="dashboard">
-        <div class="col-md-10 table-active">
+        <div class="col-md-12">
             <table class="table">
                 <thead>
                     <tr>
@@ -45,20 +44,20 @@
                         <th class="text-center"></th>
                         <th></th>
                         <th class="text-right">Precio</th>
+                        <th class="text-right">Total</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(auth()->user()->cart->details as $detail)
+                    @foreach($habitacion as $hab)
                     <?php
-$des = json_decode($detail->product->descripcion, true);
-$inc = json_decode($detail->product->incluye, true);
-$img = json_decode($detail->product->img, true);
+$des = json_decode($hab->descripcion, true);
+$inc = json_decode($hab->incluye, true);
 ?>
                     <tr>
                         <td class="text-center">
                         </td>
                         <td>
-                            <p class="h3 text-uppercase">{{$detail->product->name}}</p>
+                            <p class="h3 text-uppercase"></p>
                             <div class="row text-black text-uppercase"
                             target="_blank">
                                 <div class="col-md-6">
@@ -69,8 +68,8 @@ $img = json_decode($detail->product->img, true);
                                             <p class="descripcionhab"> {{ $desc["descrip"] }}</p>
                                         @endforeach
                                     @endif
-                                    <p><span class="text-black">Fecha Entrada:</span> {{$detail->entry_date}}
-                                    <p><span class="text-black">Fecha Salida:</span> {{$detail->departure_date}} </p>
+                                    <p><span class="text-black">Fecha Entrada:</span> {{$hab->entry_date}}
+                                    <p><span class="text-black">Fecha Salida:</span> {{$hab->departure_date}} </p>
                                 </div>
                                 <div class="col-md-6">
                                     @if(is_array($inc))
@@ -91,23 +90,23 @@ $img = json_decode($detail->product->img, true);
                              </p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p><span class="text-black">Folio de Reserva: {{$detail->folio_reserva}} </span></p>
-                                    <form method="post" action="{{ url('/cart/'.$detail->id.'/delete') }}">
-                                        @csrf
-                                        <button type="submit" rel="tooltip" title="Eliminar"
-                                            class="btn btn-link btn-sm btn-xs">Eliminar</i>
-                                        </button>
-                                    </form>
+                                    <p><span class="text-black">Folio de Reserva: {{$hab->folio_reserva}} </span></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Cantidad de noches: <span>{{$detail->quantity}} </span></p>
+                                    <p>Cantidad de noches: <span>{{$hab->quantity}} </span></p>
                                 </div>
                             </div>
                         </td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td class="col-auto">$ {{$detail->product->price}} </td>
+                        <td class="col-auto">
+                            ${{number_format($hab->price)}}
+
+                        </td>
+                        <td>
+                            <p>${{number_format($hab->price * $hab->quantity)}}</p>
+                        </td>
 
                     </tr>
                     @endforeach
@@ -115,26 +114,6 @@ $img = json_decode($detail->product->img, true);
             </table>
             <hr>
             <p class="alert alert-info">El precio y la disponibilidad de las habitaciones de BeachHotel Ines están sujetos a cambio. </p>
-        </div>
-        <div class="col-md-2 table-active">
-            <div class="">
-                <p>({{ auth()->user()->cart->details->count() }} Reservas)</p>
-                <p>Subtotal: ${{auth()->user()->cart->total}}</p>
-            </div>
-            <div class="">
-                @if(auth()->user()->cart->details->count() > 0)
-                    <a href="{{url('/payments')}} " class="btn btn-block btn-warning btn-round">
-                        Proceder al Pago
-                    </a>
-                @endif
-
-                <!--<form method="post" action=" {{ url('/order')}} ">
-                    @csrf
-                    <button class="btn btn-primary btn-round">
-                        <i class="material-icons">done</i>Relizar pedido
-                    </button>
-                </form>-->
-            </div>
         </div>
     </div>
 </div>

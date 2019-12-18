@@ -25,10 +25,9 @@
                 <table class="table table-active">
                     <thead>
                         <tr>
-                            <th class="text-center">#</th>
+                            <th class="text-center">Folio</th>
                             <th class="text-center">Habitacion</th>
                             <th class="text-center">Precio</th>
-                            <th class="text-center">Categoria</th>
                             <th class="text-center">Fecha Entrada</th>
                             <th class="text-right">Fecha Salida</th>
                             <th class="text-right">Factura</th>
@@ -43,10 +42,9 @@
                     <tbody>
                         @foreach($habitacion as  $hab)
                         <tr>
-                            <td class="text-center"> {{ $hab->id}} </td>
+                            <td class="text-center"> {{ $hab->folio_reserva}} </td>
                             <td>{{ $hab->name}}</td>
                             <td>{{ $hab->temprecio}}</td>
-                            <td> {{$hab->nomCategoria}} </td>
                             <td>{{ $hab->entry_date}}</td>
                             <td>{{ $hab->departure_date}}</td>
                             <td> {{$hab->facturar}} </td>
@@ -58,6 +56,7 @@
                                 <form method="post" action="#">
                                     @csrf
                                     {{--<a href="{{route('print')}} " rel="tooltip" title="Editar producto" class="btn btn-info btn-sm btn-block"> <i class="fa fa-edit"></i> Imprimir</a>--}}
+                                    <a href=" {{route('print',$hab->id)}} " rel="tooltip" title="ver detalles" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-info" target="_blank"></i> Imprimir</a>
 
                                     <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-block"><i class="fa fa-times text-left"></i> Desactivar</button>
                                 </form>

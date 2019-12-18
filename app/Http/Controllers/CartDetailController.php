@@ -76,6 +76,7 @@ class CartDetailController extends Controller {
 
 			$disponibilidad = DB::table('cart_details as cd')
 				->join('products as pro', 'cd.product_id', '=', 'pro.id')
+				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 				->select('cd.id', 'cd.folio_reserva', 'cd.entry_date', 'cd.departure_date', 'cd.quantity', 'pro.price as temprecio', 'pro.name as nomhabitacion')
 				->where('cd.departure_date', '>=', $request->entry_date)
 				->where('cd.entry_date', '<=', $request->departure_date)
@@ -85,6 +86,7 @@ class CartDetailController extends Controller {
 				->where('cd.departure_date', '<', $request->departure_date)
 				->where('cd.departure_date', '>', $request->entry_date)
 				->where('cd.id', '=', 8)
+				->where('pro.category_id', '=', 'cat.id')
 				->count();
 			return view('reservas.reservar', compact('habitacion', 'disponibilidad', 'diasDiferencia', 'disponibilidad', 'title_page', 'date_inicio', 'date_final'));
 		}

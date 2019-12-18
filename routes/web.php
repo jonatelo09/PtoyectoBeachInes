@@ -2,7 +2,8 @@
 /*=============================================
 =            RUTAS FRONT-END                 =
 =============================================*/
-Route::name('print')->get('/imprimir', 'GeneradorController@imprimir');
+Route::get('reservas-aprobadasusuario', 'ProductController@reservasAprobadas')->name('reservasAprobadasuser');
+Route::name('print')->get('/imprimir/{id}/reporte', 'GeneradorController@imprimir');
 Route::get('/', 'PaginaController@inicio')->name('inicio');
 Route::get('/habitaciones', 'PaginaController@estandar')->name('habitaciones');
 Route::get('/departamentos', 'PaginaController@departamento')->name('departamentos');

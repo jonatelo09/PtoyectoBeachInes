@@ -40,9 +40,9 @@ class ProductController extends Controller {
 				->select('cd.id', 'cd.entry_date', 'cd.departure_date', 'cd.facturar', 'pro.name', 'pro.price as temprecio', 'cat.name_cat as nomCategoria', 'us.username', 'us.email', 'us.phone', 'car.status')
 				->where('pro.name', 'LIKE', '%' . $query . '%')
 				->where('car.status', '=', "Active")
-			//->get()
-				->paginate(8);
-			//dd($habitacion);
+				->get();
+			//->paginate(8);
+			dd($habitacion);
 
 			return view('admin.reservas.reservas-pendientes', compact('habitacion', 'query', 'title_page', 'title_hab'));
 		}
@@ -58,7 +58,7 @@ class ProductController extends Controller {
 				->join('carts as car', 'cd.cart_id', '=', 'car.id')
 				->join('users as us', 'car.user_id', '=', 'us.id')
 				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
-				->select('cd.id', 'cd.entry_date', 'cd.departure_date', 'cd.facturar', 'pro.name', 'pro.price as temprecio', 'cat.name_cat as nomCategoria', 'us.username', 'us.email', 'us.phone', 'car.status')
+				->select('cd.id', 'cd.folio_reserva', 'cd.entry_date', 'cd.departure_date', 'cd.facturar', 'pro.name', 'pro.price as temprecio', 'cat.name_cat as nomCategoria', 'us.username', 'us.email', 'us.phone', 'car.status')
 				->where('pro.name', 'LIKE', '%' . $query . '%')
 				->where('car.status', '=', "Aprobada")
 			//->get()
@@ -81,15 +81,6 @@ class ProductController extends Controller {
 				->where('products.condicion', '=', 0)
 			//->get()
 				->paginate(8);
-			//$habitacion = Product::paginate(5);
-			//$user_id = Auth::user()->id;
-			//$habitacion = Product::with('category')->where('condicion', '=', 0)->paginate(5);
-			/*$habitacion = DB::table('products as pro')
-				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
-				->select('pro.id', 'pro.name', 'pro.descripcion', 'pro.img', 'pro.incluye', 'cat.name_cat as nomCategoria', 'pro.price as temprecio')
-				->where('pro.name', 'LIKE', '%' . $query . '%')
-				->where('pro.condicion', '=', 0)
-				->paginate(10);*/
 
 			return view('admin.products.index_inac', compact('habitacion', 'title_page', 'title_hab', 'query'));
 		}
@@ -215,7 +206,7 @@ class ProductController extends Controller {
 		$product->category_id = $request->category_id;
 		$product->save(); //ejecutar una consulta UPDATE a la tabla productos
 
-		return redirect('/admin/products');
+		return redirect()->route('products');
 	}
 
 	public function destroy($id) {

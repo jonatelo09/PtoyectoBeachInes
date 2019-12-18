@@ -51,9 +51,9 @@ $inc = json_decode($hab->incluye, true);
                               <td class="text-justify">
                                   @foreach($des as $key => $desc)
                                      {{ $desc["descrip"] }}, {{ $desc["can_p"] }}, {{ $desc["can_c"] }}.
-                                   @endforeach
-                                </td>
-                               @endif
+                                  @endforeach
+                              </td>
+                            @endif
                             @if(is_array($inc))
                                 <td class="text-justify">
                                   @foreach($inc as $key => $in)
@@ -67,7 +67,6 @@ $inc = json_decode($hab->incluye, true);
                             <td class="td-actions">
                                 <form method="post" action="{{route('products.destroy',$hab->id)}}">
                                     @csrf
-                                    {{--<a href=" {{url('/products-dos/'.$product->id)}} " rel="tooltip" title="ver detalles" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-info" target="_blank"></i></a> --}}
 
                                     <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> Editar</a>
 
