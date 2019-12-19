@@ -35,7 +35,7 @@
 
       <nav class="menu">
       <nav class="navbar navbar-expand-lg  border-bottom">
-        <button class="btn btn-dark" id="menu-toggle"><i class="fas fa-plus"></i></button>
+        <button class="btn btn-dark" id="menu-toggle"></button>
 
        <button class="navbar-toggler btn btn-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>

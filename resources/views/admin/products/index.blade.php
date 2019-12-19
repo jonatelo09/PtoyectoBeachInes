@@ -29,9 +29,9 @@
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th class="text-center">Name</th>
-                            <th class="text-center">Description</th>
-                            <th class="text-center">Incluye</th>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Descripción</th>
+                            <th class="text-center">Servicios</th>
                             <th class="text-center">Categoria</th>
                             <th class="text-right">Precio</th>
                             <th class="text-right">Opciones</th>
@@ -68,11 +68,11 @@ $inc = json_decode($hab->incluye, true);
                                 <form method="post" action="{{route('products.destroy',$hab->id)}}">
                                     @csrf
 
-                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar producto" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
+                                    <a href="{{route('products.edit',$hab->id) }}" rel="tooltip" title="Editar" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i></a>
 
                                     {{--<a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Imagenes del Producto" class="btn btn-warning btn-sm btn-xs"> <i class="fa fa-image"></i></a>--}}
 
-                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm"><i class="fa fa-times"></i></button>
+                                    <button type="submit" rel="tooltip" title="Desactivar" class="btn btn-success btn-sm"><i class="fa fa-times"></i></button>
                                 </form>
 
                             </td>

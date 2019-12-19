@@ -207,7 +207,7 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
-              <button class="btn btn-primary">Registrar Producto</button>
+              <button class="btn btn-primary">Registrar Habitacion</button>
               <a href="{{ route('products')}}" class="btn btn-default">Cancelar</a>
             </div>
           </div>

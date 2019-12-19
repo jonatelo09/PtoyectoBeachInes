@@ -57,7 +57,7 @@ return [
 
 	'from' => [
 		'address' => env('MAIL_FROM_ADDRESS', 'inesbeachhotel@gmail.com'),
-		'name' => env('MAIL_FROM_NAME', 'HotelBeachInes'),
+		'name' => env('MAIL_FROM_NAME', 'Beach Hotel Ines'),
 	],
 
 	/*

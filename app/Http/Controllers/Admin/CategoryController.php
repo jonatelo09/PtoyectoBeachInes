@@ -28,8 +28,8 @@ class CategoryController extends Controller {
 		//registrar el nuevo producto en la bd
 		//dd($request->all());
 		$messages = [
-			'name_cat.required' => 'Es necesario ingresar un nombre para el producto',
-			'name_cat.min' => 'El nombre del producto debe tener al menos 6 caracteres',
+			'name_cat.required' => 'Es necesario ingresar un nombre para la Habitación',
+			'name_cat.min' => 'El nombre del producto debe tener al menos 2 caracteres',
 			'description.required' => 'La description corta es obligatorio',
 			'description.max' => 'La descripcion corta admite solo 30 caracteres',
 		];
@@ -49,8 +49,10 @@ class CategoryController extends Controller {
 	}
 
 	public function edit($id) {
+		$title_page = "Categorias";
+		$title_hab = "Editar Categorias";
 		$categori = Category::find($id);
-		return view('admin.category.edit')->with(compact('categori'));
+		return view('admin.category.edit')->with(compact('categori','title_page', 'title_hab'));
 	}
 
 	public function update(Request $request, $id) {

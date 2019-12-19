@@ -113,7 +113,7 @@ $inc = json_decode($hab->incluye, true);
                 </tbody>
             </table>
             <hr>
-            <p class="alert alert-info">El precio y la disponibilidad de las habitaciones de BeachHotel Ines están sujetos a cambio. </p>
+            <p class="alert alert-info">El precio y la disponibilidad de las habitaciones de Beach Hotel Ines están sujetos a cambios. </p>
         </div>
     </div>
 </div>

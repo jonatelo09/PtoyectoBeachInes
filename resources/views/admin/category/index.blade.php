@@ -41,9 +41,9 @@
         					<td class="td-actions text-right">
 								<form method="post" action="{{url('/admin/category/'.$categori->id.'/delete')}}">
 									@csrf
-        							<a href="{{url('/admin/category/'.$categori->id.'/edit')}}" rel="tooltip" title="Editar producto" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+        							<a href="{{url('/admin/category/'.$categori->id.'/edit')}}" rel="tooltip" title="Editar" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
 
-									<button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+									<button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-sm" disabled=""><i class="fa fa-times"></i></button>
 								</form>
 
         					</td>

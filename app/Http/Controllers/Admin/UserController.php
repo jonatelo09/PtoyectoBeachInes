@@ -68,8 +68,11 @@ class UserController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit($id) {
+
+		$title_page = "Usuarios";
+		$title_hab = "Editar usuario";
 		$user = User::find($id);
-		return view('admin.users.edit', compact('user'));
+		return view('admin.users.edit', compact('user','title_page', 'title_hab'));
 	}
 
 	/**
