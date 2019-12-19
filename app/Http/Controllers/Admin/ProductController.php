@@ -184,6 +184,7 @@ class ProductController extends Controller {
 	}
 
 	public function update(Request $request, $id) {
+		
 		$messages = [
 			'name.required' => 'Es necesario ingresar un nombre para el producto',
 			'name.min' => 'El nombre del producto debe tener al menos 6 caracteres',
@@ -198,12 +199,17 @@ class ProductController extends Controller {
 
 		$this->validate($request, $rules, $messages);
 
+		/*Lllena el array para el campo incluye*/
+		$arraydes = ["descrip" => $request->descripcion, "can_p" => $request->cantidad_personas, "can_c" => $request->cantidad_camas];
+		$datosdescripcion = json_encode($arraydes); //Convierte en array la variable de incluye
+			//dd($datosdescripcion);
+		
 		$product = Product::find($id);
 		$product->name = $request->input('name');
 		$product->price = $request->input('price');
 		$product->descripcion = '[' . $datosdescripcion . ']';
-		$product->incluye = $json_incluye;
-		$product->category_id = $request->category_id;
+		//$product->incluye = $json_incluye;
+		//$product->category_id = $request->category_id;
 		$product->save(); //ejecutar una consulta UPDATE a la tabla productos
 
 		return redirect()->route('products');

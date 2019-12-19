@@ -86,7 +86,8 @@ class CartDetailController extends Controller {
 				->orWhere('cd.entry_date', '<', $request->entry_date)
 				->where('cd.departure_date', '<', $request->departure_date)
 				->where('cd.departure_date', '>', $request->entry_date)
-				->where('cd.id', '=', 8)
+				->where('cd.id', '=', 'pro.id')
+				->where('cd.id', '=', 'pro.category_id')
 				->where('pro.category_id', '=', 'cat.id')
 				->count();
 			return view('reservas.reservar', compact('habitacion', 'disponibilidad', 'diasDiferencia', 'disponibilidad', 'title_page', 'date_inicio', 'date_final'));

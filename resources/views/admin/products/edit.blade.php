@@ -4,7 +4,7 @@
 <div class="main main-raised">
   <div class="container">
       <div class="site-section">
-        <h2 class="title text-center elemento-4">Registrar Habitacion</h2>
+        <h2 class="title text-center elemento-4">Actualizar Habitacion</h2>
         @if ($errors->any())
           <div class="alert alert-danger">
             <ul>
@@ -32,22 +32,41 @@
           </div>
           </div>
           <div class="row">
+            @php
+                  $des = json_decode($product->descripcion,true);
+                  //dd($des);
+              @endphp
+              @if(is_array($des))
+                   @foreach($des as $key => $desc)
+                   
+                
             <div class="col-sm-6">
               <div class="form-group label-floating">
                 <label class="control-label">Descripcion</label>
-                <input type="text" class="form-control" id="descripcion" name="descripcion"  placeholder="Descripcion" required="">
+                <input type="text" class="form-control" id="descripcion" name="descripcion"  placeholder="Descripcion" required="" value="{{ $desc["descrip"] }}">
                 {!! $errors->first('descripcion','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!}
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group label-floating">
                 <label class="control-label">Cantidad de Personas</label>
-                <input type="text" class="form-control" id="cantidad_personas" name="cantidad_personas" required value="{{old('incluye', $product->incluye)}} ">
+                <input type="text" class="form-control" id="cantidad_personas" name="cantidad_personas" required value="{{ $desc["can_p"] }}">
                 {!! $errors->first('cantidad_personas','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!}
               </div>
             </div>
+            <div class="col-sm-6">
+              <div class="form-group label-floating">
+                <label class="control-label">Cantidad de camas</label>
+                <input type="text" class="form-control" id="cantidad_camas" name="cantidad_camas" required value="{{ $desc["can_c"] }}">
+                {!! $errors->first('cantidad_camas','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!}
+              </div>
+            </div>
+               @endforeach
+                                                   
+            @endif
+
           </div>
-          <div class="row">
+         {{--  <div class="row">
             <div class="col-sm-6">
               <div class="form-group label-floating">
                 <label class="control-label">Categoria de la Habitacion</label>
@@ -59,26 +78,20 @@
                 </select>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="form-group label-floating">
-                <label class="control-label">Cantidad de Camas</label>
-                <input type="text" class="form-control" id="cantidad_camas" name="cantidad_camas" required value="{{old('incluye', $product->incluye) }}">
-                {!! $errors->first('cantidad_camas','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!}
-              </div>
-            </div>
-          </div>
-          <!--<textarea class="form-control" placeholder="Descripcion extensa del producto" rows="5" name="long_description">{{old('long_description')}}</textarea>-->
-          <label for="incluye">Incluye: Seleccione al menos 1</label>
-          <div class="row">
-              @php
+            
+          </div> --}}
+          <!--<textarea class="form-control" placeholder="Descripcion extensa del producto" rows="5" name="long_description">{{-- {{old('long_description')}} --}}</textarea>-->
+         {{--  <label for="incluye">Incluye: Seleccione al menos 1</label>
+          <div class="row"> --}}
+              {{-- @php
                   $arrayinc = json_decode($product->incluye,true);
                   //dd($arrayinc);
               @endphp
               @foreach($arrayinc as $hab)
                  @php
-                     //dd($hab);
+                    // dd($hab);
                  @endphp
-              @endforeach
+              @endforeach --}}
               {{--  @if ($product->incluye=='Masculino')
                @php($hombre='checked')
                @php($mujer='')
@@ -88,7 +101,7 @@
                @php($mujer='checked')
 
               @endif --}}
-              <div class="col-md-6">
+              {{-- <div class="col-md-6">
                   <div class="form-group">
                       <div class="input-group">
                           <div class="input-group-prepend">
@@ -208,13 +221,13 @@
                                   <input type="hidden" name="incluye[12][icono]" value="fas fa-shower ">
                           </div>
                       </div>
-                     {{--  {!! $errors->first('incluye.*','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!} --}}
-                  </div>
+                     {!! $errors->first('incluye.*','<small style="color: #e60000; font-size: 15px;">:message</small> <br>') !!} --}}
+                 {{--  </div>
               </div>
-          </div>
+          </div> --}}
           <div class="row">
             <div class="col-sm-6">
-              <button class="btn btn-primary">Registrar Producto</button>
+              <button class="btn btn-primary">Actualizar</button>
               <a href="{{route('products') }}" class="btn btn-default">Cancelar</a>
             </div>
           </div>
