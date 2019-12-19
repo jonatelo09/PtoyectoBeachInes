@@ -12,6 +12,7 @@
 		            <li class="nav-item active">
 		            	<a class="nav-link" href="{{ route ('inicio')}}">INICIO</a>
 		            </li>
+		           	
 		           	<li class="nav-item dropdown">
 		                <a href="#" id="menu" data-toggle="dropdown" class="nav-link dropdown-toggle">BEACH HOTEL INES</a>
 		                <ul class="dropdown-menu">
@@ -48,6 +49,7 @@
 		                    <li class="dropdown-item">
 		                        <a class="fondo" href="{{ route ('servicios')}}">SERVICIOS</a>
 		                    </li>
+		                    		                
 		                </ul>
 		            </li>
             		<li class="nav-item">
@@ -111,3 +113,4 @@
 	  </nav>
 	</nav>
 </div>
+

@@ -65,6 +65,7 @@ class CartDetailController extends Controller {
 			->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 			->select('pro.id', 'pro.name', 'pro.descripcion', 'pro.price as temprecio', 'pro.img', 'pro.incluye', 'cat.name_cat as nomCategoria')
 			->where('pro.id', '=', $query)
+			
 			->get();
 
 		if (!empty($request->entry_date) && !empty($request->departure_date)) {

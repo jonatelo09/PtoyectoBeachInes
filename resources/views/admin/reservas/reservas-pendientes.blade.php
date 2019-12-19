@@ -67,7 +67,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{$habitacion->render()}}
             </div>
         </div><!-- end team -->
       </div><!-- end section -->

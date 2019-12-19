@@ -15,4 +15,6 @@ class CategoryController extends Controller {
 		return view('categories.showdos')->with(compact('category', 'products'));
 	}
 
+	
+
 }

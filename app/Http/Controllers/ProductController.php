@@ -53,6 +53,7 @@ class ProductController extends Controller {
 				->join('users as us', 'car.user_id', 'us.id')
 				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 				->where('us.id', '=', $user)
+				->where('car.status','=',"Aprobada")
 				->count();
 			//dd($canti);
 			$habitacion = DB::table('cart_details as cd')
@@ -62,11 +63,12 @@ class ProductController extends Controller {
 				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 				->select('cd.id', 'cd.folio_reserva', 'cd.entry_date', 'cd.departure_date', 'cd.facturar', 'cd.quantity', 'pro.descripcion', 'pro.incluye', 'pro.name', 'pro.price', 'cat.name_cat', 'us.username', 'us.email', 'us.phone', 'car.status')
 				->where('us.id', '=', $user)
+				->where('car.status','=',"Áprobada")
 				->get();
 			//->paginate(8);
 			//dd($habitacion);
 
-			return view('users.reservas-realizadas', compact('habitacion', 'query', 'title_page', 'title_hab', 'canti'));
+			return view('users.reservas-realizadas', compact('habitacion', 'title_page', 'title_hab', 'canti'));
 		}
 	}
 }

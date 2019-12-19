@@ -42,7 +42,7 @@ class ProductController extends Controller {
 				->where('car.status', '=', "Active")
 				->get();
 			//->paginate(8);
-			dd($habitacion);
+			//dd($habitacion);
 
 			return view('admin.reservas.reservas-pendientes', compact('habitacion', 'query', 'title_page', 'title_hab'));
 		}

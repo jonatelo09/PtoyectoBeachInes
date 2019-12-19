@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
+
 class PaginaController extends Controller {
 	// public function __construct()
 	// {
@@ -63,6 +64,8 @@ class PaginaController extends Controller {
 		return view('plantilla_huesped.plantilla_huesped', compact('title_page'));
 
 	}
+	
+
 
 	public function suite() {
 
@@ -88,7 +91,7 @@ class PaginaController extends Controller {
 		$habitacion = DB::table('products as pro')
 			->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 			->select('pro.id', 'pro.name', 'pro.descripcion', 'pro.img', 'pro.incluye', 'pro.price as temprecio', 'cat.name_cat as nomCategoria')
-			->where('pro.category_id', '=', 3)
+			->where('pro.category_id', '=', 2)
 			->where('pro.condicion', '=', 1)
 			->paginate(10);
 		return view('paginas.habitacionessuite', compact('habitacion', 'title_page', 'title_hab'));
@@ -102,7 +105,7 @@ class PaginaController extends Controller {
 		$habitacion = DB::table('products as pro')
 			->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 			->select('pro.id', 'pro.name', 'pro.descripcion', 'pro.img', 'pro.incluye', 'pro.price as temprecio', 'cat.name_cat as nomCategoria')
-			->where('pro.category_id', '=', 2)
+			->where('pro.category_id', '=', 3)
 			->where('pro.condicion', '=', 1)
 			->paginate(10);
 
