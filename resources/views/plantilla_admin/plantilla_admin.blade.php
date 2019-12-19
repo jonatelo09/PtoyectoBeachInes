@@ -35,7 +35,7 @@
 
       <nav class="menu">
       <nav class="navbar navbar-expand-lg  border-bottom">
-        <button class="btn btn-dark" id="menu-toggle"></button>
+       
 
        <button class="navbar-toggler btn btn-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
@@ -50,7 +50,7 @@
             <li class="nav-item dropdown estilo">
               <a class=" dropdown-toggle estilo" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 30px">
                 @auth
-                  {{ auth()->user()->nombre }} {{ auth()->user()->lastname }}
+                  {{ auth()->user()->username }} {{ auth()->user()->lastname }}
                 @endauth
               </a>
               <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown">

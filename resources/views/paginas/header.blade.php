@@ -66,7 +66,7 @@
             		</li>
             		@if (Auth::Check() && Auth::user()->admin == 1)
             		<li class="nav-item">
-                		<a class="nav-link" href="{{ route('products')}}">ADMIN</a>
+                		<a class="nav-link" href="{{ route('products')}}">ADMINISTRAR</a>
             		</li>
             		@endif
             		@if(Auth::Check() && Auth::user()->admin == 0)
@@ -80,12 +80,7 @@
 	                		<a class="nav-link 	botoninicio " href="{{ route ('login')}}"> INICIAR SESIÓN</a>
 	            		</li>
 					@else
-						{{--<li class="nav-item">
-		            		<form  method="POST" action=" {{ route('logout') }} ">
-			                {{ csrf_field() }}
-			                <button class="nav-link  logout"> CERRAR SESIÓN</button>
-                            </form>
-                        </li>--}}
+					
                         <li class="nav-item dropdown estilo">
 			              <a class=" dropdown-toggle estilo" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 30px">
 			                @auth
@@ -99,11 +94,7 @@
 			                {{ csrf_field() }}
 			                <button class="submit logout">Cerrar <i class="fa fa-power-off" aria-hidden="true"></i></button>
 			                </form>
-			                    {{-- <form style="color: blue; text-align: center;" method="POST" action="{{ route('cerrar')}}">
-			                      {{ csrf_field()}}
-			                      <button class="submit logout" >Cerrar Sesión  <i class="fa fa-power-off" aria-hidden="true"></i></button>
-
-			                    </form> --}}
+			                  
 			              </div>
 			            </li>
 	            	@endif

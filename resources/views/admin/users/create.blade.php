@@ -4,9 +4,9 @@
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="col-md-12">
-            <div class="card-header">
+           
                 <h3>BEACH HOTEL INES REGISTRO DE USUARIOS</h3>
-            </div>
+            
             <div class="card-body">
                 <form method="POST" action="{{route('users.store')}} ">
                     @csrf

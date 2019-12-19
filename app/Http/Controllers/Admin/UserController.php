@@ -16,10 +16,18 @@ class UserController extends Controller {
 	public function profile() {
 		$users = User::all();
 		return view('users.profile')->with(compact('users'));
+
+
+
 	}
 
 	public function create() {
-		return view('admin.users.create');
+
+    
+		$title_page = "Usuarios";
+		$title_hab = "Crear usuario";
+		return view('admin.users.create', compact('title_page', 'title_hab'));
+		
 	}
 
 	public function store(Request $request) {
