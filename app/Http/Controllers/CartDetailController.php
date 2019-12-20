@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CartDetail;
+use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,9 +35,10 @@ class CartDetailController extends Controller {
 		$diasDiferencia = $inicio->diffInDays($final);
 		$cartDetail->cart_id = auth()->user()->cart->id;
 		$cartDetail->product_id = $request->product_id;
-		$cartDetail->entry_date = $request->entry_date;
+		$cartDetail->entry_date = $inicio;
 		$cartDetail->quantity = $diasDiferencia;
-		$cartDetail->departure_date = $request->departure_date;
+		$cartDetail->departure_date = $final;
+		$cartDetail->condition = $request->input('condition');
 		$cartDetail->facturar = $request->input('facturar');
 		$cartDetail->folio_reserva = $request->input('folio');
 		//dd($cartDetail);
@@ -61,35 +63,35 @@ class CartDetailController extends Controller {
 	public function compararfecha(Request $request) {
 		$title_page = "Reservaciones";
 		$query = $request->get('id');
-		$habitacion = DB::table('products as pro')
+		/*$habitacion = DB::table('products as pro')
 			->join('categories as cat', 'pro.category_id', '=', 'cat.id')
 			->select('pro.id', 'pro.name', 'pro.descripcion', 'pro.price as temprecio', 'pro.img', 'pro.incluye', 'cat.name_cat as nomCategoria')
 			->where('pro.id', '=', $query)
-			
+
+			->get();*/
+		$habitacion = Product::join('categories as cat', 'products.category_id', '=', 'cat.id')
+			->select('products.id', 'products.name', 'products.descripcion', 'products.price as temprecio', 'products.img', 'products.incluye', 'cat.name_cat as nomCategoria')
+			->where('products.id', '=', $query)
 			->get();
+		//dd($habitacion);
 
 		if (!empty($request->entry_date) && !empty($request->departure_date)) {
 			$date_inicio = $request->entry_date;
 			$inicio = Carbon::parse($date_inicio);
 			$date_final = $request->departure_date;
 			$final = Carbon::parse($date_final);
+			//dd($final);
 			$diasDiferencia = $inicio->diffInDays($final);
 
 			$disponibilidad = DB::table('cart_details as cd')
 				->join('products as pro', 'cd.product_id', '=', 'pro.id')
 				->join('categories as cat', 'pro.category_id', '=', 'cat.id')
-				->select('cd.id', 'cd.folio_reserva', 'cd.entry_date', 'cd.departure_date', 'cd.quantity', 'pro.price as temprecio', 'pro.name as nomhabitacion')
-				->where('cd.departure_date', '>=', $request->entry_date)
-				->where('cd.entry_date', '<=', $request->departure_date)
-				->orWhere('cd.departure_date', '>', $request->departure_date)
-				->where('cd.entry_date', '<', $request->departure_date)
-				->orWhere('cd.entry_date', '<', $request->entry_date)
-				->where('cd.departure_date', '<', $request->departure_date)
-				->where('cd.departure_date', '>', $request->entry_date)
-				->where('cd.id', '=', 'pro.id')
-				->where('cd.id', '=', 'pro.category_id')
-				->where('pro.category_id', '=', 'cat.id')
+				->select('cd.id as idCartDetails', 'cd.folio_reserva', 'cd.entry_date', 'cd.departure_date', 'cd.quantity', 'pro.id as idProdict', 'pro.price as temprecio', 'pro.name as nomhabitacion', 'cat.id as idCatego')
+				->where('cd.entry_date', '=', $inicio)
+				->where('cd.departure_date', '=', $final)
+				->where('cd.product_id', '=', $query)
 				->count();
+			//dd($disponibilidad);
 			return view('reservas.reservar', compact('habitacion', 'disponibilidad', 'diasDiferencia', 'disponibilidad', 'title_page', 'date_inicio', 'date_final'));
 		}
 		return view('reservas.reservar', compact('habitacion', 'title_page'));

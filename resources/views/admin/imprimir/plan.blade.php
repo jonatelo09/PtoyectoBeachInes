@@ -170,7 +170,7 @@ $des = json_decode($details_id->descripcion, true);
                 <td style="border:0;">&nbsp;</td>
                 <td style="border:0;">&nbsp;</td>
                 <td align="right"><strong>TOTAL</strong></td>
-                <td align="right"><span class="text"></span></td>
+                <td align="right"><span class="text">{{$details_id->price * $details_id->quantity}}</span></td>
             </tr>
 
         </table>

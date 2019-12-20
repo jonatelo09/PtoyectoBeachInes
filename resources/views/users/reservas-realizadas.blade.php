@@ -91,6 +91,9 @@ $inc = json_decode($hab->incluye, true);
                             <div class="row">
                                 <div class="col-md-6">
                                     <p><span class="text-black">Folio de Reserva: {{$hab->folio_reserva}} </span></p>
+                                    <p>
+                                        <a href=" {{route('print',$hab->id)}} " rel="tooltip" title="Imprimir" class="btn btn-info btn-sm btn-xs"> <i class="fa fa-info" target="_blank"></i>   Imprimir</a>
+                                    </p>
                                 </div>
                                 <div class="col-md-6">
                                     <p>Cantidad de noches: <span>{{$hab->quantity}} </span></p>

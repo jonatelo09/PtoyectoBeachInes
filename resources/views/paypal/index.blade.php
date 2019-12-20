@@ -4,6 +4,33 @@
 
 @section('contenido')
 <div class="container">
+    <br>
+    <br>
+    @if (session('notification'))
+    <div class="alert alert-success" role="alert">
+        {{ session('notification') }}
+    </div>
+    @endif
+    @if(isset($errors) && $errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }} </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        <ul>
+            @foreach (session()->get('success') as $message)
+            <li>{{ $message }} </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <hr>
     <div class="row justify-content-center mt-lg-5 mt-sm-4">
         <div class="col-md-7 table-active">
             <div class="elemento-7">
@@ -74,10 +101,6 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="form-group">
-                            <input type="checkbox" class="form-check-inline" name="condicion" required>
-                            <label>Aceptar termino y condiciones...</label>
-                        </div>
                         <div class="row mt-3">
                             <div class="col">
                                 <label>Selecciona la plataforma de pago de desees:</label>
