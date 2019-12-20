@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group label-floating">
-              <label class="control-label">Descripcion corta de la categoria</label>
+              <label class="control-label">Descripción corta de la categoria</label>
             <input type="text" class="form-control" name="description" value="{{old('description')}}">
             </div>
           </div>

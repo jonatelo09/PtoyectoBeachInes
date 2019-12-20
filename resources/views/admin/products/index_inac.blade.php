@@ -21,13 +21,13 @@
                     </form>
                 </div>
             </div>
-            <div class="row elemento-4">
+           <div class="table-responsive">
 
 
-                <table class="table table-active table-hover">
-                    <thead>
+                <table class="table text-center table-hover"style="background: #FFF;">
+                    <thead class="thead-dark">
                         <tr>
-                            <th class="text-center">#</th>
+                            <th class="text-center">ID</th>
                             <th class="text-center">Nombre</th>
                             <th class="text-center">Descripción</th>
                             <th class="text-center">Servicios</th>
@@ -37,11 +37,11 @@
                         </tr>
                     </thead>
                     <tbody>
-@foreach($habitacion as  $hab)
-<?php
-$des = json_decode($hab->descripcion, true);
-$inc = json_decode($hab->incluye, true);
-?>
+                        @foreach($habitacion as  $hab)
+                        <?php
+                        $des = json_decode($hab->descripcion, true);
+                        $inc = json_decode($hab->incluye, true);
+                        ?>
                         <tr>
                             <td class="text-center"> {{ $hab->id}} </td>
                             <td>{{ $hab->name}}</td>
@@ -65,11 +65,9 @@ $inc = json_decode($hab->incluye, true);
                                 <form method="post" action="{{route('products.activar',$hab->id)}}">
                                     @csrf
 
-                                    {{-- <a href="{{route('products.edit',$hab->id)}}" rel="tooltip" title="Editar producto" class="btn btn-success btn-sm btn-xs btn-block"> <i class="fa fa-edit"></i> Editar </a> --}}
+          
 
-{{--                                   <a href="{{url('/admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Imagenes del Producto" class="btn btn-warning btn-sm btn-xs"> <i class="fa fa-image"></i></a> --}}
-
-                                    <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-success btn-sm btn-xs btn-block"><i class="fa fa-plus"></i> Activar</button>
+                                    <button type="submit" rel="tooltip" title="Activar" class="btn btn-success btn-sm btn-xs btn-block"><i class="fa fa-plus"></i> Activar</button>
                                 </form>
 
                             </td>

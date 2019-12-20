@@ -144,6 +144,7 @@
                                                 <button type="submit" class="btn btn-primary">
                                                     {{ __('Registrar') }}
                                                 </button>
+                                                <a class="btn btn-secondary" href="{{route('users')}}">Cancelar</a>
                                                 <br>
                                             </div>
                                         </div>

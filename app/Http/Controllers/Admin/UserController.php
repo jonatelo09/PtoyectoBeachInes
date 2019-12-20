@@ -90,10 +90,25 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, User $user) {
-		$user->update($request->all());
+	public function update(Request $request, $id) {
+		//$user->update($request->all());
 
+		$user = User::find($id);
+		$user->username = $request->input('username');
+		$user->firstname = $request->input('firstname');
+		$user->lastname = $request->input('lastname');
+		$user->sex = $request->input('sex');
+		// $user->email = $request->input('email');
+		$user->phone = $request->input('phone');
+		$user->address = $request->input('address');
+		// $user->admin = $request->input('admin');
+		// $user->password = bcrypt($request->input('password'));
+		//dd($user);
+        $user->save();
 		return redirect()->route('users', $user->id);
+
+
+
 	}
 
 	/**

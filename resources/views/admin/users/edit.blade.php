@@ -4,9 +4,9 @@
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="col-md-12">
-            <div class="card-header">
-                <h3>BEACH HOTEL INES REGISTRO DE USUARIOS</h3>
-            </div>
+           
+                <h2 class="title text-center elemento-4">Actualizar Usuario</h2>
+        
             <div class="card-body">
                 <form method="POST" action="{{route('users.update',$user->id)}} ">
                     @csrf
@@ -15,10 +15,13 @@
                             <div class="col-12 col-md-12 col-sm-12">
                                 <div class="row register-form">
                                     <div class="col-md-6">
+                                         <label class="control-label">Nombre de usuario:</label>
+
                                         <div class="input-group form-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-user text-info"></i></span>
                                             </div>
+                                             
                                             <input id="nombre" type="text" placeholder="Usuario" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username',$user->username) }}" required autocomplete="username" autofocus>
 
                                             @error('username')
@@ -27,10 +30,12 @@
                                             </span>
                                             @enderror
                                         </div>
+                                         <label class="control-label">Nombre:</label>
                                         <div class="input-group form-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-user-edit text-info"></i></span>
                                             </div>
+                                        
                                             <input id="apellidos" type="text" placeholder="Nombre" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname',$user->firstname) }}" required autocomplete="firstname" autofocus>
 
                                             @error('firstname')
@@ -39,6 +44,26 @@
                                             </span>
                                             @enderror
                                         </div>
+                                         <label class="control-label">Apellidos:</label>
+                                         <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user-edit text-info"></i></span>
+                                            </div>
+
+                                            <input id="apellidos" type="text" placeholder="Lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname',$user->lastname) }}" required autocomplete="lastname" autofocus>
+
+                                            @error('lastname')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                        <div class="col-md-6">
+                                       
+                                       
+                                       <label class="control-label">Sexo:</label>
+                                   
                                         <div class="input-group form-group" style="background: #fff;" >
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-venus-mars text-info"></i></span>
@@ -61,6 +86,7 @@
                                                 </label>
                                             </div>
                                         </div>
+                                         <label class="control-label">Dirección:</label>
                                         <div class="input-group form-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-address-book text-info"></i></span>
@@ -73,6 +99,7 @@
                                             </span>
                                             @enderror
                                         </div>
+                                         <label class="control-label">Teléfono:</label>
                                         <div class="input-group form-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-phone text-info"></i></span>
@@ -84,83 +111,19 @@
                                             </span>
                                             @enderror
                                         </div>
+                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-user-edit text-info"></i></span>
-                                            </div>
-                                            <input id="apellidos" type="text" placeholder="Lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname',$user->lastname) }}" required autocomplete="lastname" autofocus>
-
-                                            @error('lastname')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-at text-info"></i></span>
-                                            </div>
-                                            <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email',$user->email) }}" required autocomplete="email">
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-key text-info"></i></span>
-                                            </div>
-
-                                            <input id="password" type="password" placeholder="Contraseña" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" value="old('password',$user->password)">
-
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-key text-info"></i></span>
-                                            </div>
-                                            <input id="password-confirm" type="password" placeholder="Confirmar Contraseña" class="form-control" name="password_confirmation" required autocomplete="new-password" value="old('password',$user->password)">
-                                        </div>
-                                        <div class="input-group form-group" style="background: #fff;" >
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-venus-mars text-info"></i></span>
-                                            </div>
-                                            @if ($user->admin==1)
-                                                 @php($hombre='checked')
-                                                 @php($mujer='')
-                                                 @else
-                                                 @php($hombre='')
-                                                 @php($mujer='checked')
-                                             @endif
-                                            <div class="maxl">
-                                                <label class="radio inline">
-                                                    <input type="radio" name="admin" id="admin" required autocomplete="admino" autofocus value="Masculino" {{ $hombre }} style="margin-left: 30px; margin-top: 12px;">
-                                                    <span> Admin </span>
-                                                </label>
-                                                <label class="radio inline">
-                                                    <input type="radio" name="admin" id="admin" required autocomplete="admin" autofocus value="Femenino" {{ $mujer }} style="margin-left: 40px;">
-                                                    <span>Cliente</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row"  align="center">
+                                    <div class="row"  align="center">
                                     <div class="col-md-12" align="center">
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('GUARDAR') }}
+                                            {{ __('Guardar') }}
                                         </button>
-                                        <a class="btn btn-secondary" href="{{route('users')}}">REGRESAR</a>
+                                        <a class="btn btn-secondary" href="{{route('users')}}">Cancelar</a>
                                         <br>
                                     </div>
                                 </div>
+                                </div>
+                               
                             </div>
                         </div>
                     </div>

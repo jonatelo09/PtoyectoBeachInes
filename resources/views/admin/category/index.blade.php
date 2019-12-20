@@ -5,7 +5,7 @@
     <div class="container">
       <div class="site-section">
         <div class="team">
-            <h2 class="title">Categorias Disponibles</h2>
+            <h2 class="title">Categorias</h2>
             <div class="container">
                 <a href=" {{url('/admin/category/create')}} " class="btn btn-primary btn-round mt-1 mb-3">Nueva Categoria</a>
             </div>
@@ -24,13 +24,14 @@
                     </form>
                 </div>
             </div>
-        	<div class="row">
-        		<table class="table">
-        			<thead>
+        <div class="table-responsive">
+        		<table class="table text-center table-hover"style="background: #FFF;">
+            <thead class="thead-dark">
+        		
         				<tr>
         					<th class="text-center">Nombre</th>
-        					<th class="">Description</th>
-                            <th class="text-right">Opciones</th>
+        					<th class="">Descripción</th>
+                  <th class="text-right">Opciones</th>
         				</tr>
         			</thead>
         			<tbody>
@@ -43,7 +44,7 @@
 									@csrf
         							<a href="{{url('/admin/category/'.$categori->id.'/edit')}}" rel="tooltip" title="Editar" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
 
-									<button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-sm" disabled=""><i class="fa fa-times"></i></button>
+									{{-- <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-sm" disabled=""><i class="fa fa-times"></i></button> --}}
 								</form>
 
         					</td>
@@ -51,6 +52,8 @@
         				@endforeach
         			</tbody>
         		</table>
+
+
                 {{$categories->links()}}
         	</div>
       	</div><!-- end team -->

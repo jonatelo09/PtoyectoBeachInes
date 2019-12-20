@@ -24,11 +24,11 @@
                     </form>
                 </div>
             </div>
-            <div class="row elemento-4">
-                <table class="table">
-                    <thead>
+            <div class="table-responsive">
+                <table class="table text-center table-hover"style="background: #FFF;">
+                   <thead class="thead-dark">
                         <tr>
-                            <th class="text-center">#</th>
+                            <th class="text-center">ID</th>
                             <th class="text-center">Nombre</th>
                             <th class="text-center">Descripción</th>
                             <th class="text-center">Servicios</th>
